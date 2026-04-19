@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paulus Ndamanomhata | Haraka Consulting</title>
+    <meta name="description" content="CIA • CISA • Principal Consultant at Haraka Consulting. 15+ years in Internal Audit, IT Advisory, GRC & Risk Management.">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        :root {
+            --navy: #0a0f1c;
+            --navy-light: #111827;
+            --teal: #0fc4a7;
+            --teal-bright: #14f5d1;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --bg: #0a0f1c;
+        }
+
+        [data-theme="light"] {
+            --navy: #f8fafc;
+            --navy-light: #ffffff;
+            --teal: #0fc4a7;
+            --teal-bright: #14f5d1;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --bg: #f8fafc;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.7; transition: background 0.4s ease; }
+
+        /* NAV */
+        nav { 
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000; 
+            padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(10,15,28,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(15,196,167,0.15); 
+        }
+        [data-theme="light"] nav { background: rgba(248,250,252,0.95); border-color: #e2e8f0; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); }
+        .logo span { color: var(--teal); }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 15px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--teal); }
+
+        .hamburger { display: none; font-size: 28px; background: none; border: none; color: var(--text); cursor: pointer; padding: 5px; }
+
+        .mobile-menu {
+            display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(10,15,28,0.98); 
+            backdrop-filter: blur(12px); padding: 20px 5%; flex-direction: column; gap: 20px; 
+            border-top: 1px solid rgba(15,196,167,0.15); z-index: 999;
+        }
+        [data-theme="light"] .mobile-menu { background: rgba(248,250,252,0.98); }
+        .mobile-menu a { color: var(--text); font-size: 16px; padding: 12px 0; border-bottom: 1px solid rgba(15,196,167,0.1); text-decoration: none; }
+
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 110px 5% 60px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); }
+        .hero-content { max-width: 1100px; margin: 0 auto; width: 100%; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(15,196,167,0.1); color: var(--teal); padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-weight: 600; letter-spacing: 1px; margin-bottom: 20px; }
+        .hero-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(42px, 8vw, 78px); font-weight: 700; line-height: 1.05; margin-bottom: 16px; }
+        .hero-title { font-size: 19px; color: var(--teal-bright); margin-bottom: 24px; }
+        .hero-bio { max-width: 620px; font-size: 17px; color: var(--text-muted); margin-bottom: 40px; }
+
+        /* SECTIONS */
+        section { padding: 80px 5%; }
+        .section-header { font-family: 'Space Grotesk', sans-serif; font-size: 15px; letter-spacing: 3px; color: var(--teal); text-transform: uppercase; margin-bottom: 12px; }
+        .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.1; margin-bottom: 60px; }
+
+        /* TESTIMONIALS & GRIDS */
+        .testimonials-grid, .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+        /* INDUSTRIES - SIDE-BY-SIDE */
+        .industries-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 24px; 
+        }
+        .industry-category { 
+            background: var(--navy-light); 
+            padding: 32px; 
+            border-radius: 16px; 
+            border: 1px solid rgba(15,196,167,0.15); 
+        }
+        .industry-category h3 { 
+            color: var(--teal); 
+            margin-bottom: 18px; 
+            font-size: 18px; 
+            font-weight: 600; 
+        }
+        .industry-category ul { list-style: none; }
+        .industry-category li { 
+            padding: 8px 0; 
+            font-size: 15.5px; 
+            position: relative; 
+            padding-left: 22px; 
+        }
+        .industry-category li:before { 
+            content: "•"; 
+            color: var(--teal); 
+            position: absolute; 
+            left: 0; 
+        }
+
+        /* CONTACT FORM */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        form { background: var(--navy-light); padding: 32px; border-radius: 16px; border: 1px solid rgba(15,196,167,0.15); }
+        .form-group { margin-bottom: 22px; }
+        label { display: block; font-size: 13px; font-weight: 600; color: var(--teal); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        input, select, textarea { width: 100%; padding: 14px 16px; border: 1px solid rgba(15,196,167,0.25); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 16px; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,196,167,0.2); }
+        textarea { min-height: 140px; resize: vertical; }
+        .submit-btn { width: 100%; padding: 16px; background: var(--teal); color: #0a0f1c; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.3s; }
+        .submit-btn:hover { background: var(--teal-bright); transform: translateY(-2px); }
+        #successMessage { display: none; text-align: center; padding: 40px; background: rgba(15,196,167,0.1); border-radius: 16px; color: var(--teal); animation: popIn 0.4s ease; }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 58px;
+            height: 58px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        footer { text-align: center; padding: 30px 5%; font-size: 12.5px; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+            .hero { padding: 100px 5% 50px; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">Haraka <span>Consulting</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#qualifications">Qualifications</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.linkedin.com/in/paulus-ndamanomhata-cia-cisa-cobit-cc-38498a24/" target="_blank" style="color:var(--teal); font-weight:600;">LinkedIn</a></li>
+            <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button></li>
+        </ul>
+        <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" onclick="toggleMobileMenu()">About</a>
+        <a href="#qualifications" onclick="toggleMobileMenu()">Qualifications</a>
+        <a href="#expertise" onclick="toggleMobileMenu()">Expertise</a>
+        <a href="#services" onclick="toggleMobileMenu()">Services</a>
+        <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
+        <a href="#industries" onclick="toggleMobileMenu()">Industries</a>
+        <a href="#testimonials" onclick="toggleMobileMenu()">Testimonials</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+        <a href="https://www.linkedin.com/in/paulus-ndamanomhata-cia-cisa-cobit-cc-38498a24/" target="_blank" onclick="toggleMobileMenu()">🔗 LinkedIn Profile</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">Windhoek, Namibia • CIA • CISA</div>
+            <h1 class="hero-name">Paulus<br>Ndamanomhata</h1>
+            <p class="hero-title">Principal Consultant | Internal Audit • IT Advisory • GRC Specialist</p>
+            <p class="hero-bio">15+ years leading Internal Audit, IT Governance, Risk & Compliance engagements across central banking, Big Four advisory, and international payment systems. Founder of Haraka Consulting.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT - UPDATED PROFILE SECTION -->
+    <section id="about">
+        <div class="section-header">PROFILE</div>
+        <h2 class="section-title">Building resilient organizations through trusted governance.</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+            <div>
+                <p style="font-size:18px; line-height:1.8;">I partner with forward-thinking leaders and institutions to create robust governance, risk, and compliance systems that protect value and unlock sustainable growth. My approach combines deep technical expertise with practical, Namibia-focused insight to deliver measurable results in complex environments.</p>
+                <p style="margin-top:24px; color:var(--text-muted);">Every engagement is built on trust, transparency, and a commitment to turning risk into strategic advantage.</p>
+            </div>
+            <div style="background:var(--navy-light); padding:40px; border-radius:16px;">
+                <strong>My Promise</strong><br><br>
+                Clarity in complexity.<br>
+                Confidence in compliance.<br>
+                Control in uncertainty.
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY QUALIFICATIONS & CERTIFICATIONS -->
+    <section id="qualifications" style="background:var(--navy-light);">
+        <div class="section-header">KEY QUALIFICATIONS & CERTIFICATIONS</div>
+        <h2 class="section-title">Credentials &amp; Professional Development</h2>
+        <ul style="list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; font-size:16px;">
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• Certified Internal Auditor (CIA)</li>
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• Certified Information Systems Auditor (CISA)</li>
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• COBIT 5 – IT Management and Governance</li>
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• PRINCE2 – Project Management</li>
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• ITIL Foundation</li>
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• Management Development Programme (University of Stellenbosch)</li>
+            <li style="background:var(--navy); padding:16px 20px; border-radius:12px;">• Bachelor of Accounting (UNAM)</li>
+        </ul>
+        <p style="margin-top:30px; font-size:15px;"><strong>Professional Memberships:</strong> Institute of Internal Auditors (IIA) | Information Systems Audit and Control Association (ISACA) | International Information System Security Certification Consortium (ISC)²</p>
+    </section>
+
+    <!-- AREAS OF EXPERTISE -->
+    <section id="expertise">
+        <div class="section-header">AREAS OF EXPERTISE</div>
+        <h2 class="section-title">Core Competencies</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Internal Audit & IT Audit (ITGC & Application Controls)</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Governance, Risk & Compliance (GRC) Frameworks</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Enterprise Risk Management (ERM)</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• IT Strategy, Business Continuity & Disaster Recovery</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Information Security & Vulnerability Assessments</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Cyber Risk Evaluation</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Forensic Investigations & Fraud Risk Assessments</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Board & Executive Reporting</div>
+            <div style="background:var(--navy-light); padding:24px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);">• Regulatory Compliance & Oversight (including Payment Systems)</div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" style="background:var(--navy-light);">
+        <div class="section-header">WHAT I DELIVER</div>
+        <h2 class="section-title">Strategic GRC &amp; Advisory Services</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div style="background:var(--navy); padding:32px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);"><h3 style="margin-bottom:12px;">Internal Audit &amp; Assurance</h3><p>Risk-based internal audits, co-sourced/outsourced IA functions, and independent assurance.</p></div>
+            <div style="background:var(--navy); padding:32px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);"><h3 style="margin-bottom:12px;">IT Advisory &amp; Cybersecurity</h3><p>ITGC &amp; Application Controls, vulnerability assessments, cyber risk evaluations.</p></div>
+            <div style="background:var(--navy); padding:32px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);"><h3 style="margin-bottom:12px;">Enterprise Risk &amp; Governance</h3><p>ERM frameworks, risk workshops, board governance, and regulatory compliance.</p></div>
+            <div style="background:var(--navy); padding:32px; border-radius:16px; border:1px solid rgba(15,196,167,0.15);"><h3 style="margin-bottom:12px;">Business Continuity &amp; Strategy</h3><p>IT Strategy, BCM, Disaster Recovery, and payment systems oversight.</p></div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <div class="section-header">CAREER TIMELINE</div>
+        <h2 class="section-title">15+ Years of Impact</h2>
+        <div style="max-width:900px; margin:0 auto; position:relative; padding-left:40px;">
+            <div style="position:absolute; left:18px; top:0; bottom:0; width:3px; background:rgba(15,196,167,0.2);"></div>
+            <div style="margin-bottom:60px; position:relative;"><div style="color:var(--teal); font-size:14px; font-weight:600;">Oct 2025 – Present</div><div style="font-size:22px; font-weight:700; margin:8px 0;">Principal Consultant — Haraka Consulting</div><p>Lead Internal Audit, IT Advisory, Governance, Risk &amp; Compliance engagements across Namibia.</p></div>
+            <div style="margin-bottom:60px; position:relative;"><div style="color:var(--teal); font-size:14px; font-weight:600;">Jan 2022 – Sep 2025</div><div style="font-size:22px; font-weight:700; margin:8px 0;">Specialist: IT Projects &amp; Governance — University of Namibia</div><p>Developed university-wide Information Governance Strategy and lectured at Namibia Business School.</p></div>
+            <div style="margin-bottom:60px; position:relative;"><div style="color:var(--teal); font-size:14px; font-weight:600;">Jun 2017 – Jan 2022</div><div style="font-size:22px; font-weight:700; margin:8px 0;">Principal Payment Systems Analyst — Bank of Namibia</div><p>Led national payment systems oversight and represented BoN on SADC forums.</p></div>
+            <div style="margin-bottom:60px; position:relative;"><div style="color:var(--teal); font-size:14px; font-weight:600;">Jan 2015 – May 2017</div><div style="font-size:22px; font-weight:700; margin:8px 0;">Supervisor — KPMG Risk Advisory (Namibia)</div><p>Managed IT Advisory, Internal Audit, and GRC engagements.</p></div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="industries" style="background:var(--navy-light);">
+        <div class="section-header">INDUSTRY EXPERIENCE</div>
+        <h2 class="section-title">Proven across key sectors</h2>
+        <div class="industries-grid">
+            <div class="industry-category">
+                <h3>Banking &amp; Financial Services</h3>
+                <ul>
+                    <li>Bank of Namibia</li>
+                    <li>National Commercial Bank (NCB, Saudi Arabia)</li>
+                    <li>NedNamibia Holdings Ltd</li>
+                    <li>Development Bank of Namibia</li>
+                    <li>StandardBank Namibia</li>
+                    <li>First National Bank</li>
+                    <li>Namibian Financial Institution Supervisory Authority (NAMFISA)</li>
+                    <li>MMI Holdings Namibia Limited</li>
+                    <li>Old Mutual</li>
+                    <li>Entrepo Finance</li>
+                </ul>
+            </div>
+            <div class="industry-category">
+                <h3>Mining, Aviation &amp; Logistics</h3>
+                <ul>
+                    <li>Rössing Uranium</li>
+                    <li>Air Namibia (Pty) Ltd</li>
+                    <li>Parcel Force Couriers Pty (Ltd)</li>
+                    <li>Sunshine Tours</li>
+                    <li>TransNamib Holdings Ltd</li>
+                    <li>Roads Authority</li>
+                    <li>Road Fund Administration (RFA)</li>
+                </ul>
+            </div>
+            <div class="industry-category">
+                <h3>Manufacturing, Utilities &amp; Technology</h3>
+                <ul>
+                    <li>NamPower</li>
+                    <li>CENORED (Pty) Ltd</li>
+                    <li>NORED (Pty) Ltd</li>
+                    <li>Coca Cola Sabco Namibia Bottling Company (Pty) Ltd</li>
+                    <li>Cornastone Information Technology Services (Pty) Ltd</li>
+                </ul>
+            </div>
+            <div class="industry-category">
+                <h3>Public Sector &amp; Education</h3>
+                <ul>
+                    <li>The Motor Vehicle Accident Fund (MVA)</li>
+                    <li>Namibian Broadcasting Corporation (NBC)</li>
+                    <li>Namibian Training Authority</li>
+                    <li>The Namibia College of Open Learning (NAMCOL)</li>
+                    <li>NANASO</li>
+                    <li>Global Fund Namibia</li>
+                    <li>University of Namibia</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" style="background:var(--navy-light);">
+        <div class="section-header">TESTIMONIALS</div>
+        <h2 class="section-title">National Infrastructure &amp; GRC Leadership</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <h3 style="color:var(--teal); margin-bottom:16px;">National Infrastructure &amp; GRC Leadership</h3>
+                <p class="quote">"Regarded as a highly knowledgeable GRC professional, this individual played a pivotal role in strengthening national financial infrastructure. Key contributions were made through the oversight of payment systems and the execution of comprehensive risk assessments, ensuring long-term systemic stability within the Central Banking sector."</p>
+            </div>
+            <div class="testimonial-card">
+                <h3 style="color:var(--teal); margin-bottom:16px;">Technical IT Advisory &amp; Cyber Risk</h3>
+                <p class="quote">"Exceptional IT Advisory and Internal Audit services were delivered during high-stakes engagements. A profound technical command of COBIT, ITGC, and cyber risk frameworks was consistently demonstrated, providing Big Four standards of assurance and actionable mitigation strategies."</p>
+            </div>
+            <div class="testimonial-card">
+                <h3 style="color:var(--teal); margin-bottom:16px;">Framework Transformation &amp; Project Leadership</h3>
+                <p class="quote">"A significant transformation of IT Governance and compliance frameworks was achieved within a large-scale Higher Education environment. Strategic thinking was seamlessly integrated with hands-on project leadership, resulting in a modernized compliance culture and the effective development of internal teams."</p>
+            </div>
+            <div class="testimonial-card">
+                <h3 style="color:var(--teal); margin-bottom:16px;">ERM &amp; Board-Level Advisory</h3>
+                <p class="quote">"The approach to Enterprise Risk Management (ERM) was fundamentally elevated through board-level advisory. A rare ability was shown to translate complex risk concepts into practical business strategies, directly contributing to operational resilience within the Development Finance industry."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT WITH INTERACTIVE FORM -->
+    <section id="contact">
+        <div class="section-header">LET’S CONNECT</div>
+        <h2 class="section-title">Ready to strengthen your governance, risk &amp; controls?</h2>
+        
+        <div class="contact-grid">
+            <div>
+                <p style="font-size:18px; margin-bottom:30px;">Whether you need an independent IT audit, ERM framework, cybersecurity review, or board-level governance support — I deliver senior-led results with local insight and international standards.</p>
+                <a href="mailto:harakaconsuling@outlook.com" style="display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit; margin-bottom:24px;">
+                    <span style="width:48px;height:48px;background:rgba(15,196,167,0.1);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;">✉</span>
+                    <div><div style="font-size:13px;color:var(--teal);">Email</div><div style="font-weight:600;">harakaconsuling@outlook.com</div></div>
+                </a>
+                <a href="tel:+264853004486" style="display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit;">
+                    <span style="width:48px;height:48px;background:rgba(15,196,167,0.1);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;">📱</span>
+                    <div><div style="font-size:13px;color:var(--teal);">Phone</div><div style="font-weight:600;">+264 85 300 4486</div></div>
+                </a>
+                <a href="https://www.linkedin.com/in/paulus-ndamanomhata-cia-cisa-cobit-cc-38498a24/" target="_blank" style="display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit; margin-top:30px;">
+                    <span style="width:48px;height:48px;background:rgba(15,196,167,0.1);color:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;">🔗</span>
+                    <div><div style="font-size:13px;color:var(--teal);">LinkedIn</div><div style="font-weight:600;">View full professional profile</div></div>
+                </a>
+            </div>
+
+            <form id="contactForm">
+                <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" required></div>
+                <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" required></div>
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone"></div>
+                <div class="form-group"><label for="service">Interested Service</label>
+                    <select id="service">
+                        <option value="">Select a service...</option>
+                        <option value="Internal Audit & Assurance">Internal Audit &amp; Assurance</option>
+                        <option value="IT Advisory & Cybersecurity">IT Advisory &amp; Cybersecurity</option>
+                        <option value="Enterprise Risk & Governance">Enterprise Risk &amp; Governance</option>
+                        <option value="Business Continuity & Strategy">Business Continuity &amp; Strategy</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="message">Message</label><textarea id="message" rows="5" required placeholder="Tell me about your project or requirements..."></textarea></div>
+                <button type="submit" id="submitBtn" class="submit-btn"><span id="btnText">Send Message</span><span id="spinner" style="display:none;">⭘</span></button>
+                <div id="successMessage"><h3>✅ Message Sent Successfully!</h3><p>Thank you! Paulus will get back to you within 24 hours.</p></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- WHATSAPP CHATBOT -->
+    <a href="https://wa.me/264853004486?text=Hi%20Paulus%2C%20I%27d%20like%20to%20discuss%20GRC%20services%20with%20you." 
+       target="_blank" 
+       class="whatsapp-float" 
+       title="Chat with me on WhatsApp">
+        💬
+    </a>
+
+    <footer>
+        © 2026 Paulus Ndamanomhata • Haraka Consulting • Windhoek, Namibia<br>
+        CIA • CISA • COBIT 5 • Prince2 • (ISC)²
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+        function toggleTheme() {
+            const body = document.documentElement;
+            const current = body.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            document.querySelector('.theme-toggle').textContent = newTheme === 'light' ? '☽' : '☀️';
+        }
+
+        // Contact form - simple success simulation (no CRM)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const spinner = document.getElementById('spinner');
+            const success = document.getElementById('successMessage');
+            const form = this;
+
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+
+            setTimeout(() => {
+                form.style.display = 'none';
+                success.style.display = 'block';
+                setTimeout(() => {
+                    form.reset();
+                    form.style.display = 'block';
+                    success.style.display = 'none';
+                    btn.disabled = false;
+                    btnText.style.display = 'inline';
+                    spinner.style.display = 'none';
+                }, 4000);
+            }, 1600);
+        });
+    </script>
+</body>
+</html>
